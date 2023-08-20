@@ -3,7 +3,10 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
+
 import useFetch from '../../../hooks/useFetch'
+import { Img } from '../../../components/lazyLoadImage/Img'
+import ContentWrapper from '../../../components/contentWrapper/ContentWrapper'
 import './style.scss'
 
 const HeroBaner = () => {
@@ -32,22 +35,30 @@ const HeroBaner = () => {
 
     return (
         <div className='heroBanner'>
-            <div className="wraper">
-                <div className="heroBannerContent">
-                    <span className="title">Welcom.</span>
-                    <span className="subTitle">Millions of movies, TV shows and people to discover.
-                        Explore now.</span>
-                    <div className="searchInput">
-                        <input
-                            type="text"
-                            placeholder='Search for a movie or tv show...'
-                            onKeyUp={handleSearchQuery}
-                            onChange={handleSearchInput}
-                        />
-                        <button>Search</button>
+
+            {!loading && <div className="backdrop-img">
+                <Img src={background} />
+            </div>}
+                <div className='opacity-layer'></div>
+
+            <ContentWrapper>
+                <div className="wraper">
+                    <div className="heroBannerContent">
+                        <span className="title">Welcom.</span>
+                        <span className="subTitle">Millions of movies, TV shows and people to discover.
+                            Explore now.</span>
+                        <div className="searchInput">
+                            <input
+                                type="text"
+                                placeholder='Search for a movie or tv show...'
+                                onKeyUp={handleSearchQuery}
+                                onChange={handleSearchInput}
+                            />
+                            <button>Search</button>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </ContentWrapper>
         </div>
     )
 }
