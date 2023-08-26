@@ -28,7 +28,12 @@ const HeroBaner = () => {
             navigate(`/search/${query}`)
         }
     }
-
+    
+    const handleClickSearch =()=>{
+        if(query.length>0){
+            navigate(`/search/${query}`)
+        }
+    }
     const handleSearchInput = (event) => {
         setQuery(event.target.value)
     }
@@ -54,7 +59,7 @@ const HeroBaner = () => {
                                 onKeyUp={handleSearchQuery}
                                 onChange={handleSearchInput}
                             />
-                            <button>Search</button>
+                            <button onClick={handleClickSearch}>Search</button>
                         </div>
                     </div>
                 </div>
